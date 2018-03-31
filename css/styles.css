@@ -7,3 +7,15 @@
 
 html {
   font-size: 62.5%; }
+
+.information {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  width: 30%;
+  height: 10em;
+  background-color: aqua; }
+  .information__title {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%); }
