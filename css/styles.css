@@ -46,5 +46,18 @@ html {
   background-color: palegreen;
   margin: 0 auto;
   height: 20%; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 3.5em; }
   .row:not(:last-child) {
     margin-bottom: 3.5em; }
+
+.col-1-of-4 {
+  background-color: navy;
+  height: 100%;
+  width: calc((100% - 3 * 3.5em) / 4); }

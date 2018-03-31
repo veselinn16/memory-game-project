@@ -2,8 +2,24 @@
     background-color: palegreen;
     margin: 0 auto;
     height: 20%;
+
+    @include clearfix;
+
+    [class^="col-"] {
+        float: left;
+
+        &:not(:last-child) {
+            margin-right: $gutter;
+        }
+    }
     
     &:not(:last-child) {
-        margin-bottom: 3.5em;
+        margin-bottom: $gutter;
     }
+}
+
+.col-1-of-4 {
+    background-color: navy;
+    height: 100%;
+    width: calc((100% - 3 * #{$gutter}) / 4);
 }
