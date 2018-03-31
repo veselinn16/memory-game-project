@@ -1,0 +1,9 @@
+.row {
+    background-color: palegreen;
+    margin: 0 auto;
+    height: 20%;
+    
+    &:not(:last-child) {
+        margin-bottom: 3.5em;
+    }
+}
