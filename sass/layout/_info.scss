@@ -5,4 +5,15 @@
     width: 30%;
     height: 10em;
     background-color: aqua;
+    padding: 2em;
+
+    &__title {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        font-size: 4em;
+        font-family: "Philosopher", sans-serif;
+        margin-bottom: 1em;
+        background-color: red;
+    }
 }
