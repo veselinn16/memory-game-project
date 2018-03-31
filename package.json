@@ -1,0 +1,14 @@
+{
+  "name": "memory-game",
+  "version": "1.0.0",
+  "description": "Memory game project",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/styles.css -w"
+  },
+  "author": "Veselin Tonev",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.8.3"
+  }
+}
