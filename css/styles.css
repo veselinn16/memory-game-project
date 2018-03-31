@@ -14,8 +14,13 @@ html {
   transform: translate(-50%);
   width: 30%;
   height: 10em;
-  background-color: aqua; }
+  background-color: aqua;
+  padding: 2em; }
   .information__title {
     position: absolute;
     left: 50%;
-    transform: translate(-50%); }
+    transform: translate(-50%);
+    font-size: 4em;
+    font-family: "Philosopher", sans-serif;
+    margin-bottom: 1em;
+    background-color: red; }
