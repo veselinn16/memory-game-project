@@ -24,3 +24,10 @@ html {
     font-family: "Philosopher", sans-serif;
     margin-bottom: 1em;
     background-color: red; }
+  .information__data {
+    position: relative;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: purple;
+    width: 90%; }
