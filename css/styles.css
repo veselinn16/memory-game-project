@@ -35,8 +35,16 @@ html {
 .game {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 55%;
   transform: translate(-50%, -50%);
   width: 35%;
-  height: 65em;
-  background-color: peru; }
+  height: 60em;
+  background-color: peru;
+  padding: 2em 3.5em; }
+
+.row {
+  background-color: palegreen;
+  margin: 0 auto;
+  height: 20%; }
+  .row:not(:last-child) {
+    margin-bottom: 3.5em; }
