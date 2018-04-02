@@ -16,37 +16,37 @@ body {
   position: absolute;
   left: 50%;
   transform: translate(-50%);
-  width: 30%;
-  height: 10em;
-  background-color: aqua;
+  width: 40%;
+  height: 16em;
   padding: 2em; }
   .information__title {
     position: absolute;
     left: 50%;
+    top: 30%;
     transform: translate(-50%);
-    font-size: 4em;
+    font-size: 6em;
     font-family: "Philosopher", sans-serif;
-    margin-bottom: 1em;
-    background-color: red; }
+    margin-bottom: 1em; }
   .information__data {
     position: relative;
     top: 70%;
     left: 50%;
     transform: translate(-50%);
-    background-color: floralwhite;
-    width: 90%;
-    height: 30%;
+    width: 70%;
+    height: 25%;
     font-size: 2rem;
     padding: 1rem; }
-    .information__data--icon {
-      text-align: left;
-      font-family: "linea-basic-10"; }
+    .information__data-icon {
+      font-family: "linea-basic-10";
+      font-size: 1.5rem; }
+      .information__data-icon--repeat {
+        float: right; }
+        .information__data-icon--repeat::after {
+          content: "";
+          display: table;
+          clear: both; }
     .information__data__moves {
-      float: right; }
-      .information__data__moves::after {
-        content: "";
-        display: table;
-        clear: both; }
+      margin-left: 0.5rem; }
 
 .game {
   position: absolute;
