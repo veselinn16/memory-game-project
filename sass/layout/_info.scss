@@ -2,19 +2,18 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%);
-    width: 30%;
-    height: 10em;
-    background-color: aqua;
+    width: 40%;
+    height: 16em;
     padding: 2em;
 
     &__title {
         position: absolute;
         left: 50%;
+        top: 30%;
         transform: translate(-50%);
-        font-size: 4em;
+        font-size: 6em;
         font-family: "Philosopher", sans-serif;
         margin-bottom: 1em;
-        background-color: red;
     }
 
     &__data {
@@ -22,28 +21,27 @@
         top: 70%;
         left: 50%;
         transform: translate(-50%);
-        background-color: floralwhite;
-        width: 90%;
-        height: 30%;
+        width: 70%;
+        height: 25%;
         font-size: 2rem;
         padding: 1rem;
 
-        &--icon {
-            text-align: left;
+        &-icon {
             font-family: "linea-basic-10";
+            font-size: 1.5rem;
+
+            &--repeat {
+                float: right;
+
+                @include clearfix;
+            }
         }
         
         &__moves {
-            float: right;
-
-            @include clearfix;
+            margin-left: 0.5rem; 
         }
 
-        &__moves--number {
-
-        }
-
-        &__moves--text {
+        &__text {
 
         }
     }
