@@ -5,6 +5,7 @@
     width: 40%;
     height: 16em;
     padding: 2em;
+    font-family: "Philosopher", sans-serif;
 
     &__title {
         position: absolute;
@@ -12,7 +13,6 @@
         top: 30%;
         transform: translate(-50%);
         font-size: 6em;
-        font-family: "Philosopher", sans-serif;
         margin-bottom: 1em;
     }
 
