@@ -22,7 +22,29 @@
         top: 70%;
         left: 50%;
         transform: translate(-50%);
-        background-color: purple;
+        background-color: floralwhite;
         width: 90%;
+        height: 30%;
+        font-size: 2rem;
+        padding: 1rem;
+
+        &--icon {
+            text-align: left;
+            font-family: "linea-basic-10";
+        }
+        
+        &__moves {
+            float: right;
+
+            @include clearfix;
+        }
+
+        &__moves--number {
+
+        }
+
+        &__moves--text {
+
+        }
     }
 }
