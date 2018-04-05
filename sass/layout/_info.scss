@@ -27,12 +27,12 @@
         padding: 1rem;
 
         &-icon {
-            font-family: "linea-basic-10";
             font-size: 1.5rem;
 
             &--repeat {
                 float: right;
-
+                cursor: pointer;
+                
                 @include clearfix;
             }
         }
