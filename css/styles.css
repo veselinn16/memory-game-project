@@ -14,19 +14,20 @@ body {
 
 .information {
   position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  width: 40%;
-  height: 16em;
-  padding: 2em;
+  left: 25%;
+  width: 50%;
+  height: 20%;
+  padding: 2rem;
   font-family: "Philosopher", sans-serif; }
   .information__title {
     position: absolute;
-    left: 50%;
-    top: 30%;
-    transform: translate(-50%);
-    font-size: 6em;
-    margin-bottom: 1em; }
+    left: 10%;
+    top: 15%;
+    width: 80%;
+    margin-bottom: 1rem; }
+    .information__title-heading {
+      text-align: center;
+      font-size: 6rem; }
   .information__data {
     position: relative;
     top: 70%;
@@ -51,12 +52,13 @@ body {
 .game {
   position: absolute;
   left: 50%;
-  top: 55%;
+  top: 70%;
   transform: translate(-50%, -50%);
-  width: 35%;
-  height: 60em;
+  width: 40%;
+  height: 80%;
   padding: 2em 3.5em;
   border-radius: 1rem;
+  margin-bottom: 4rem;
   background-image: linear-gradient(to right bottom, #cca76a, #d7be7e);
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2); }
 

@@ -1,12 +1,13 @@
 .game {
     position: absolute;
     left: 50%;
-    top: 55%;
+    top: 70%;
     transform: translate(-50%, -50%);
-    width: 35%;
-    height: 60em;
+    width: 40%;
+    height: 80%;
     padding: 2em 3.5em;
     border-radius: 1rem;
+    margin-bottom: 4rem;
     background-image: linear-gradient(to right bottom, #cca76a, #d7be7e);
     box-shadow: 0 1.5rem 4rem rgba(black, .2);
 }

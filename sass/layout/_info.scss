@@ -1,19 +1,22 @@
 .information {
     position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    width: 40%;
-    height: 16em;
-    padding: 2em;
+    left: 25%;
+    width: 50%;
+    height: 20%;
+    padding: 2rem;
     font-family: "Philosopher", sans-serif;
 
     &__title {
         position: absolute;
-        left: 50%;
-        top: 30%;
-        transform: translate(-50%);
-        font-size: 6em;
-        margin-bottom: 1em;
+        left: 10%;
+        top: 15%;
+        width: 80%;
+        margin-bottom: 1rem;
+
+        &-heading {
+            text-align: center;
+            font-size: 6rem;
+        }
     }
 
     &__data {
