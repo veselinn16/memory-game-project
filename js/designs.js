@@ -5,6 +5,7 @@ function main() {
     const $star3 = $star2.next();
     const $cards = $(".game i");
     let $num = 0;
+    const $resetIcon = $(".icon-basic-ban");
 
     const $classes = ["card__symbol icon-basic-clubs", "card__symbol icon-basic-clubs", "card__symbol icon-basic-heart", "card__symbol icon-basic-heart", "card__symbol icon-basic-diamonds", "card__symbol icon-basic-diamonds", "card__symbol icon-basic-spades", "card__symbol icon-basic-spades", "card__symbol icon-basic-signs", "card__symbol icon-basic-signs", "card__symbol icon-basic-helm", "card__symbol icon-basic-helm", "card__symbol icon-basic-flag1", "card__symbol icon-basic-flag1", "card__symbol icon-basic-globe", "card__symbol icon-basic-globe"];
     
@@ -32,6 +33,11 @@ function main() {
           $star3.remove();
       };
     });
+
+    //reset function
+    $resetIcon.click(function() {
+      location.reload(true);
+    });    
 };
 
 $(document).ready(main);
