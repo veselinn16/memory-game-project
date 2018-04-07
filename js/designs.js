@@ -7,7 +7,7 @@ function main() {
     let $num = 0;
     const $resetIcon = $(".icon-basic-ban");
 
-    const $classes = ["card__symbol icon-basic-clubs", "card__symbol icon-basic-clubs", "card__symbol icon-basic-heart", "card__symbol icon-basic-heart", "card__symbol icon-basic-diamonds", "card__symbol icon-basic-diamonds", "card__symbol icon-basic-spades", "card__symbol icon-basic-spades", "card__symbol icon-basic-signs", "card__symbol icon-basic-signs", "card__symbol icon-basic-helm", "card__symbol icon-basic-helm", "card__symbol icon-basic-flag1", "card__symbol icon-basic-flag1", "card__symbol icon-basic-globe", "card__symbol icon-basic-globe"];
+    const $classes = ["card__symbol card_side--back icon-basic-clubs", "card__symbol card_side--back icon-basic-clubs", "card__symbol card_side--back icon-basic-heart", "card__symbol card_side--back icon-basic-heart", "card__symbol card_side--back icon-basic-diamonds", "card__symbol card_side--back icon-basic-diamonds", "card__symbol card_side--back icon-basic-spades", "card__symbol card_side--back icon-basic-spades", "card__symbol card_side--back icon-basic-signs", "card__symbol card_side--back icon-basic-signs", "card__symbol card_side--back icon-basic-helm", "card__symbol card_side--back icon-basic-helm", "card__symbol card_side--back icon-basic-flag1", "card__symbol card_side--back icon-basic-flag1", "card__symbol card_side--back icon-basic-globe", "card__symbol card_side--back icon-basic-globe"];
     
     // add classes
     $cards.each(function() {
@@ -15,6 +15,12 @@ function main() {
         $(this).addClass($classes[$ranNum]);
         $classes.splice($ranNum, 1);
     });
+
+    // rotate cards
+    $(".card_side--front").click(function() {
+      $(this).css("transform", "rotateY(-180deg)");
+      $(this).next().css('transform', 'rotateY(0)');
+    })
 
     $(".card").click(function(event) {
       // click counter function
@@ -32,6 +38,22 @@ function main() {
         case 12:
           $star3.remove();
       };
+
+      // $(this).flip('toggle');
+    
+
+      // $(this).animate({ textIndent: 0 }, {
+      //   step: function(fx) {
+      //     $(this).css('-webkit-transform', 'rotateY(180deg)');
+      //     $(this).next().css("-webkit-transform", "rotateY(0)");
+      //   },
+      //   duration: 'slow' 
+      // }, 'linear');  
+      
+      // $(this).animate({
+      //   opacity: 0
+      // }, 600);
+      // $(this).css('backface-visibility', 'visible')
     });
 
     //reset function
