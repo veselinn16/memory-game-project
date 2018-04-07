@@ -30,7 +30,8 @@
         transition: all .8s ease;
 
         &--front {
-            background-color: #c5bece;
+            background-color: #fdedc5;
+            // background-color: #c5bece;
         }
 
         &--back{
@@ -41,12 +42,4 @@
             color: #fdedc5;
         }
     }
-
-    // &:hover &_side--front {
-    //     transform: rotateY(-180deg); 
-    // }
-
-    // &:hover &_side--back {
-    //     transform: rotateY(0);
-    // }
 }

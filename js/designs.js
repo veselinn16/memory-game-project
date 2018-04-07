@@ -6,9 +6,21 @@ function main() {
     const $cards = $(".game i");
     let $num = 0;
     const $resetIcon = $(".icon-basic-ban");
+    const $startTime = $(".seconds");
+    let $var = 0;
+    let $min = 0;
+    const $minutes = $('.minutes');
 
     const $classes = ["card__symbol card_side--back icon-basic-clubs", "card__symbol card_side--back icon-basic-clubs", "card__symbol card_side--back icon-basic-heart", "card__symbol card_side--back icon-basic-heart", "card__symbol card_side--back icon-basic-diamonds", "card__symbol card_side--back icon-basic-diamonds", "card__symbol card_side--back icon-basic-spades", "card__symbol card_side--back icon-basic-spades", "card__symbol card_side--back icon-basic-signs", "card__symbol card_side--back icon-basic-signs", "card__symbol card_side--back icon-basic-helm", "card__symbol card_side--back icon-basic-helm", "card__symbol card_side--back icon-basic-flag1", "card__symbol card_side--back icon-basic-flag1", "card__symbol card_side--back icon-basic-globe", "card__symbol card_side--back icon-basic-globe"];
-    
+
+    // let lol = setInterval(timer(), 1000);
+    // function timer() {
+    //     $today = new Date(); 
+    //     $startTime.innerHTML = $today.toLocaleTimeString();
+    // };
+    // setTimeout(function() {
+    //   $startTime.text($startTime + 1);
+    // }, 1000);
     // add classes
     $cards.each(function() {
         let $ranNum = Math.floor(Math.random() * $classes.length);
@@ -44,6 +56,25 @@ function main() {
         case 12:
           $star3.remove();
       };
+
+      setInterval(function() {
+        $var += 1;
+        
+        // timer functions
+        if ($var < 10) {
+          $startTime.text("0" + $var);
+        } else if ($var > 59) {
+          $var = 0;
+          $startTime.text('00');
+        } else if ($var >= 10) {
+          $startTime.text($var);
+        };
+      }, 1000);
+
+      setInterval(function() {
+        $min += 1;
+        $minutes.text($min);
+      }, 60000);
     });
 
     //reset function
