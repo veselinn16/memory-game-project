@@ -35,9 +35,9 @@ body {
     transform: translate(-50%);
     width: 70%;
     height: 25%;
-    font-size: 2rem; }
+    font-size: 3rem; }
     .information__data-icon {
-      font-size: 1.5rem; }
+      font-size: 2rem; }
       .information__data-icon--repeat {
         float: right;
         cursor: pointer; }
@@ -47,6 +47,11 @@ body {
           clear: both; }
     .information__data__moves {
       margin-left: 0.5rem; }
+    .information__data__time {
+      text-align: center;
+      display: inline;
+      position: absolute;
+      left: 50%; }
 
 .game {
   position: absolute;
@@ -107,7 +112,7 @@ body {
     backface-visibility: hidden;
     transition: all .8s ease; }
     .card_side--front {
-      background-color: #c5bece; }
+      background-color: #fdedc5; }
     .card_side--back {
       background-image: linear-gradient(to right bottom, #322c51, #9c4c74);
       font-size: 4rem;
