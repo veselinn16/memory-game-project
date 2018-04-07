@@ -3,7 +3,7 @@ function main() {
     const $star1 = $("i").first();
     const $star2 = $star1.next();
     const $star3 = $star2.next();
-    const $cards = $(".game i");
+    const $cards = $(".card_side--back");
     let $num = 0;
     const $resetIcon = $(".icon-basic-ban");
     const $startTime = $(".seconds");
@@ -11,27 +11,34 @@ function main() {
     let $min = 0;
     const $minutes = $('.minutes');
 
-    const $classes = ["card__symbol card_side--back icon-basic-clubs", "card__symbol card_side--back icon-basic-clubs", "card__symbol card_side--back icon-basic-heart", "card__symbol card_side--back icon-basic-heart", "card__symbol card_side--back icon-basic-diamonds", "card__symbol card_side--back icon-basic-diamonds", "card__symbol card_side--back icon-basic-spades", "card__symbol card_side--back icon-basic-spades", "card__symbol card_side--back icon-basic-signs", "card__symbol card_side--back icon-basic-signs", "card__symbol card_side--back icon-basic-helm", "card__symbol card_side--back icon-basic-helm", "card__symbol card_side--back icon-basic-flag1", "card__symbol card_side--back icon-basic-flag1", "card__symbol card_side--back icon-basic-globe", "card__symbol card_side--back icon-basic-globe"];
+    const $classes = ['<i class="card__symbol card_side--back icon-basic-clubs"></i>', '<i class="card__symbol card_side--back icon-basic-clubs"></i>', '<i class="card__symbol card_side--back icon-basic-heart"></i>', '<i class="card__symbol card_side--back icon-basic-heart"></i>', '<i class="card__symbol card_side--back icon-basic-diamonds"></i>', '<i class="card__symbol card_side--back icon-basic-diamonds"></i>', '<i class="card__symbol card_side--back icon-basic-spades"></i>', '<i class="card__symbol card_side--back icon-basic-spades"></i>','<i class="card__symbol card_side--back icon-basic-signs"></i>', '<i class="card__symbol card_side--back icon-basic-signs"></i>', '<i class="card__symbol card_side--back icon-basic-helm"></i>', '<i class="card__symbol card_side--back icon-basic-helm"></i>', '<i class="card__symbol card_side--back icon-basic-flag1"></i>', '<i class="card__symbol card_side--back icon-basic-flag1"></i>', '<i class="card__symbol card_side--back icon-basic-globe"></i>', '<i class="card__symbol card_side--back icon-basic-globe"></i>'];
 
-    // let lol = setInterval(timer(), 1000);
-    // function timer() {
-    //     $today = new Date(); 
-    //     $startTime.innerHTML = $today.toLocaleTimeString();
-    // };
-    // setTimeout(function() {
-    //   $startTime.text($startTime + 1);
-    // }, 1000);
+    // timer functions
+      setInterval(function() {
+        $var += 1;
+        
+        if ($var < 10) {
+          $startTime.text("0" + $var);
+        } else if ($var > 59) {
+          $min += 1;
+          $minutes.text($min);
+          $var = 0;
+          $startTime.text('00');
+        } else if ($var >= 10) {
+          $startTime.text($var);
+        };
+      }, 1000);
+
+      // setInterval(function() {
+      //   $min += 1;
+      //   $minutes.text($min);
+      // }, 60000);
+
     // add classes
     $cards.each(function() {
         let $ranNum = Math.floor(Math.random() * $classes.length);
-        $(this).addClass($classes[$ranNum]);
+        $(this).html($classes[$ranNum]);
         $classes.splice($ranNum, 1);
-    });
-
-    // flip back of cards
-    $(".card_side--front").click(function() {
-      $(this).css("transform", "rotateY(-180deg)");
-      $(this).next().css('transform', 'rotateY(0)');
     });
 
     // flip front of cards
@@ -40,12 +47,18 @@ function main() {
       $(this).prev().css('transform', 'rotateY(0)');      
     });
 
-    $(".card").click(function() {
-      // click counter function
+    $(".card_side--front").click(function() {
+      // click counter
       $num += 1;
       $moves.text($num);
-      // INSERT SMOOTH TRANSITION
-      //remove stars switch statement
+      
+      // flip back of cards
+      $(this).css("transform", "rotateY(-180deg)");
+      $(this).next().css('transform', 'rotateY(0)');
+
+      console.log($(this).className);
+
+      // remove stars switch statement
       switch ($num) {
         case 4:
           $star1.remove();
@@ -56,25 +69,6 @@ function main() {
         case 12:
           $star3.remove();
       };
-
-      setInterval(function() {
-        $var += 1;
-        
-        // timer functions
-        if ($var < 10) {
-          $startTime.text("0" + $var);
-        } else if ($var > 59) {
-          $var = 0;
-          $startTime.text('00');
-        } else if ($var >= 10) {
-          $startTime.text($var);
-        };
-      }, 1000);
-
-      setInterval(function() {
-        $min += 1;
-        $minutes.text($min);
-      }, 60000);
     });
 
     //reset function
