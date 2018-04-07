@@ -16,13 +16,19 @@ function main() {
         $classes.splice($ranNum, 1);
     });
 
-    // rotate cards
+    // flip back of cards
     $(".card_side--front").click(function() {
       $(this).css("transform", "rotateY(-180deg)");
       $(this).next().css('transform', 'rotateY(0)');
-    })
+    });
 
-    $(".card").click(function(event) {
+    // flip front of cards
+    $(".card_side--back").click(function() {
+      $(this).css("transform", "rotateY(180deg)");
+      $(this).prev().css('transform', 'rotateY(0)');      
+    });
+
+    $(".card").click(function() {
       // click counter function
       $num += 1;
       $moves.text($num);
@@ -38,22 +44,6 @@ function main() {
         case 12:
           $star3.remove();
       };
-
-      // $(this).flip('toggle');
-    
-
-      // $(this).animate({ textIndent: 0 }, {
-      //   step: function(fx) {
-      //     $(this).css('-webkit-transform', 'rotateY(180deg)');
-      //     $(this).next().css("-webkit-transform", "rotateY(0)");
-      //   },
-      //   duration: 'slow' 
-      // }, 'linear');  
-      
-      // $(this).animate({
-      //   opacity: 0
-      // }, 600);
-      // $(this).css('backface-visibility', 'visible')
     });
 
     //reset function
