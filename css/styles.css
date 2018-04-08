@@ -66,6 +66,21 @@ body {
   background-image: linear-gradient(to right bottom, #cca76a, #d7be7e);
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2); }
 
+.modal {
+  width: 50vh;
+  height: 50vh;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 10rem;
+  border-radius: 1rem;
+  display: none; }
+  .modal__heading {
+    font-size: 5rem; }
+
 .row {
   margin: 0 auto;
   height: 20%; }
@@ -119,3 +134,5 @@ body {
       font-weight: bold;
       transform: rotateY(180deg);
       color: #fdedc5; }
+      .card_side--back span {
+        visibility: hidden; }
