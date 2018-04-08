@@ -39,6 +39,10 @@
             font-weight: bold;
             transform: rotateY(180deg);
             color: #fdedc5;
+
+            span {
+                visibility: hidden;
+            }
         }
     }
 }

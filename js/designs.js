@@ -11,9 +11,9 @@ function main() {
     let $min = 0;
     const $minutes = $('.minutes');
 
-    const $classes = ['<i class="card__symbol card_side--back icon-basic-clubs"></i>', '<i class="card__symbol card_side--back icon-basic-clubs"></i>', '<i class="card__symbol card_side--back icon-basic-heart"></i>', '<i class="card__symbol card_side--back icon-basic-heart"></i>', '<i class="card__symbol card_side--back icon-basic-diamonds"></i>', '<i class="card__symbol card_side--back icon-basic-diamonds"></i>', '<i class="card__symbol card_side--back icon-basic-spades"></i>', '<i class="card__symbol card_side--back icon-basic-spades"></i>','<i class="card__symbol card_side--back icon-basic-signs"></i>', '<i class="card__symbol card_side--back icon-basic-signs"></i>', '<i class="card__symbol card_side--back icon-basic-helm"></i>', '<i class="card__symbol card_side--back icon-basic-helm"></i>', '<i class="card__symbol card_side--back icon-basic-flag1"></i>', '<i class="card__symbol card_side--back icon-basic-flag1"></i>', '<i class="card__symbol card_side--back icon-basic-globe"></i>', '<i class="card__symbol card_side--back icon-basic-globe"></i>'];
+    const $classes = ['<i class="card__symbol card_side--back icon-basic-clubs"></i><span>a</span>', '<i class="card__symbol card_side--back icon-basic-clubs"></i><span>a</span>', '<i class="card__symbol card_side--back icon-basic-heart"></i><span>b</span>', '<i class="card__symbol card_side--back icon-basic-heart"></i><span>b</span>', '<i class="card__symbol card_side--back icon-basic-diamonds"></i><span>c</span>', '<i class="card__symbol card_side--back icon-basic-diamonds"></i><span>c</span>', '<i class="card__symbol card_side--back icon-basic-spades"></i><span>d</span>', '<i class="card__symbol card_side--back icon-basic-spades"></i><span>d</span>', '<i class="card__symbol card_side--back icon-basic-signs"></i><span>e</span>', '<i class="card__symbol card_side--back icon-basic-signs"></i><span>e</span>', '<i class="card__symbol card_side--back icon-basic-helm"></i><span>f</span>', '<i class="card__symbol card_side--back icon-basic-helm"></i><span>f</span>', '<i class="card__symbol card_side--back icon-basic-flag1"></i><span>g</span>', '<i class="card__symbol card_side--back icon-basic-flag1"></i><span>g</span>', '<i class="card__symbol card_side--back icon-basic-globe"></i><span>h</span>', '<i class="card__symbol card_side--back icon-basic-globe"></i><span>h</span>'];
 
-    // timer functions
+    // timer function
       setInterval(function() {
         $var += 1;
         
@@ -29,11 +29,6 @@ function main() {
         };
       }, 1000);
 
-      // setInterval(function() {
-      //   $min += 1;
-      //   $minutes.text($min);
-      // }, 60000);
-
     // add classes
     $cards.each(function() {
         let $ranNum = Math.floor(Math.random() * $classes.length);
@@ -44,9 +39,11 @@ function main() {
     // flip front of cards
     $(".card_side--back").click(function() {
       $(this).css("transform", "rotateY(180deg)");
-      $(this).prev().css('transform', 'rotateY(0)');      
+      $(this).prev().css('transform', 'rotateY(0)');
     });
 
+    let $symbols = [];
+    let $matches = 0;
     $(".card_side--front").click(function() {
       // click counter
       $num += 1;
@@ -56,7 +53,28 @@ function main() {
       $(this).css("transform", "rotateY(-180deg)");
       $(this).next().css('transform', 'rotateY(0)');
 
-      console.log($(this).className);
+
+      // gets letter of card 
+      let $symbol = $(this).next().children('span').text();
+      $symbols.push($symbol);
+      console.log($symbols);
+
+      if($symbols.length === 2) {
+        if ($symbols[0] !== $symbols[1]) {
+          // $(this).css("transform", "rotateX(90deg)");
+          $(this).css("transform", "rotateX(360deg)");
+          $(this).next().css('transform', 'rotateY(0)');
+          $(this).find()
+          $symbols = [];
+          console.log("nope");
+        } else {
+          console.log("yay");
+          $(this).css("color", "red");
+          $(this).next().css("color", "red");
+          $symbols = [];
+          $matches += 1;
+        }
+      }      
 
       // remove stars switch statement
       switch ($num) {
@@ -69,6 +87,12 @@ function main() {
         case 12:
           $star3.remove();
       };
+
+      if($matches === 8) {
+        $('.modal__subheading').text('You did it in ' + $num + ' moves, with a rating of !');//include STARS
+        $('.modal__time').text('Your time was ' + $minutes.text() + ':' + $startTime.text());
+        $('.modal').css('display', 'block');
+      }
     });
 
     //reset function
