@@ -45,4 +45,20 @@
             }
         }
     }
+
+    &__match {
+        animation: shake 0.5s ease-out;
+    }
+
+    // &__flip {
+    //     transform: rotateY(0);   
+    // }
+
+    // &__flip--back {
+    //     transform: rotateY(-180deg);   
+    // }
+
+    // &__flip1 {
+    //     transform: rotateY(180deg);           
+    // }
 }
