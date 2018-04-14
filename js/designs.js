@@ -36,45 +36,79 @@ function main() {
         $classes.splice($ranNum, 1);
     });
 
+    let $card = null;
+
     // flip front of cards
-    $(".card_side--back").click(function() {
-      $(this).css("transform", "rotateY(180deg)");
-      $(this).prev().css('transform', 'rotateY(0)');
-    });
 
     let $symbols = [];
     let $matches = 0;
+    let $cardArray = [];
     $(".card_side--front").click(function() {
       // click counter
       $num += 1;
       $moves.text($num);
-      
+
+      firstCard = $(this);
+      $cardArray.push(firstCard);
+
       // flip back of cards
-      $(this).css("transform", "rotateY(-180deg)");
+      $(this).css('transform', 'rotateY(-180deg)');
       $(this).next().css('transform', 'rotateY(0)');
 
+      // // gets letter of card v.mentor 
+      // let $symbol = $(this).next().children('span').text();
+      // $symbols.push($symbol);
+      // console.log($symbols);
+      
+      // if (firstCard === null) {
+      //   firstCard = $(this);
+      //   console.log('yes');
+      // }
+
+      // if ($symbols.length === 2) {
+      //   if ($symbols[0] !== $symbols[1]) {
+      //     $(this).css("transform", "rotateY(-180deg)");
+      //     $(this).next().css('transform', 'rotateY(0)');
+      //     $(firstCard).next().css('transform', 'rotateY(0)');
+      //     $(firstCard).css("transform", "rotateY(-180deg)");
+      //     $symbols = [];
+      //     console.log("NOPE");
+      //   } else {
+      //     console.log("YAY");
+      //     $symbols = [];
+      //     $matches += 1;
+      //   }
+        
+      //   firstCard = null;
+      // }
 
       // gets letter of card 
       let $symbol = $(this).next().children('span').text();
       $symbols.push($symbol);
       console.log($symbols);
-
-      if($symbols.length === 2) {
+      
+      if ($symbols.length === 2) {
         if ($symbols[0] !== $symbols[1]) {
-          // $(this).css("transform", "rotateX(90deg)");
-          $(this).css("transform", "rotateX(360deg)");
-          $(this).next().css('transform', 'rotateY(0)');
-          $(this).find()
+          // $(this).css("transform", "rotateY(-180deg)");
+          // $(this).next().css("transform", "rotateY(0)");
+          for (let i=0; i < $cardArray.length; i++) {
+            $cardArray[i].css("transform", "rotateY(0)");
+            $cardArray[i].next().css("transform", "rotateY(180deg)");
+          }
+          $cardArray = []
           $symbols = [];
           console.log("nope");
         } else {
           console.log("yay");
-          $(this).css("color", "red");
-          $(this).next().css("color", "red");
+          for (let i = 0; i < $cardArray.length; i++) {
+            $cardArray[i].addClass('card__match');
+            $cardArray[i].next().addClass("card__match");
+          }
+          $cardArray = [];
           $symbols = [];
           $matches += 1;
         }
-      }      
+      }
 
       // remove stars switch statement
       switch ($num) {
@@ -93,6 +127,11 @@ function main() {
         $('.modal__time').text('Your time was ' + $minutes.text() + ':' + $startTime.text());
         $('.modal').css('display', 'block');
       }
+    });
+    
+    $(".card_side--back").click(function() {
+      $(this).css("transform", "rotateY(180deg)");
+      $(this).prev().css('transform', 'rotateY(0)');
     });
 
     //reset function
