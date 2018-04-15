@@ -4,7 +4,6 @@
     width: 50%;
     height: 20%;
     padding: 2rem;
-    font-family: "Philosopher", sans-serif;
 
     &__title {
         position: absolute;
@@ -27,17 +26,6 @@
         width: 70%;
         height: 25%;
         font-size: 3rem;
-
-        &-icon {
-            font-size: 2rem;
-
-            &--repeat {
-                float: right;
-                cursor: pointer;
-                
-                @include clearfix;
-            }
-        }
         
         &__moves {
             margin-left: 0.5rem; 
@@ -51,3 +39,4 @@
         }
     }
 }
+
