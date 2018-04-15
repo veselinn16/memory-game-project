@@ -5,7 +5,7 @@ function main() {
     const $star3 = $star2.next();
     const $cards = $(".card_side--back");
     let $num = 0;
-    const $resetIcon = $(".icon-basic-ban");
+    const $reset = $(".btn");
     const $startTime = $(".seconds");
     let $var = 0;
     let $min = 0;
@@ -91,10 +91,10 @@ function main() {
         if ($symbols[0] !== $symbols[1]) {
           // $(this).css("transform", "rotateY(-180deg)");
           // $(this).next().css("transform", "rotateY(0)");
-          for (let i=0; i < $cardArray.length; i++) {
-            $cardArray[i].css("transform", "rotateY(0)");
-            $cardArray[i].next().css("transform", "rotateY(180deg)");
-          }
+          $cardArray[0].css("transform", "rotateY(0)");
+          $cardArray[0].next().css("transform", "rotateY(180deg)");
+          $cardArray[1].css("transform", "rotateY(-360deg)");
+          $cardArray[1].next().css("transform", "rotateY(-180deg)");          
           $cardArray = []
           $symbols = [];
           console.log("nope");
@@ -122,7 +122,7 @@ function main() {
           $star3.remove();
       };
 
-      if($matches === 8) {
+      if($matches === 1) {
         $('.modal__subheading').text('You did it in ' + $num + ' moves, with a rating of !');//include STARS
         $('.modal__time').text('Your time was ' + $minutes.text() + ':' + $startTime.text());
         $('.modal').css('display', 'block');
@@ -135,7 +135,7 @@ function main() {
     });
 
     //reset function
-    $resetIcon.click(function() {
+    $reset.click(function() {
       location.reload(true);
     });    
 };
