@@ -10,48 +10,48 @@ function main() {
     let $var = 0;
     let $min = 0;
     const $minutes = $('.minutes');
+    $on = null;
+    let $card = null;
+    let $symbols = [];
+    let $matches = 0;
+    let $cardArray = [];
 
+    // CLASSES ARRAY
     const $classes = ['<i class="card__symbol card_side--back icon-basic-clubs"></i><span>a</span>', '<i class="card__symbol card_side--back icon-basic-clubs"></i><span>a</span>', '<i class="card__symbol card_side--back icon-basic-heart"></i><span>b</span>', '<i class="card__symbol card_side--back icon-basic-heart"></i><span>b</span>', '<i class="card__symbol card_side--back icon-basic-diamonds"></i><span>c</span>', '<i class="card__symbol card_side--back icon-basic-diamonds"></i><span>c</span>', '<i class="card__symbol card_side--back icon-basic-spades"></i><span>d</span>', '<i class="card__symbol card_side--back icon-basic-spades"></i><span>d</span>', '<i class="card__symbol card_side--back icon-basic-signs"></i><span>e</span>', '<i class="card__symbol card_side--back icon-basic-signs"></i><span>e</span>', '<i class="card__symbol card_side--back icon-basic-helm"></i><span>f</span>', '<i class="card__symbol card_side--back icon-basic-helm"></i><span>f</span>', '<i class="card__symbol card_side--back icon-basic-flag1"></i><span>g</span>', '<i class="card__symbol card_side--back icon-basic-flag1"></i><span>g</span>', '<i class="card__symbol card_side--back icon-basic-globe"></i><span>h</span>', '<i class="card__symbol card_side--back icon-basic-globe"></i><span>h</span>'];
 
-    $on = null;
-    // timer function
-
-    // add classes
+    // RANDOMLY ADD CLASSES
     $cards.each(function() {
         let $ranNum = Math.floor(Math.random() * $classes.length);
         $(this).html($classes[$ranNum]);
         $classes.splice($ranNum, 1);
     });
 
-    let $card = null;
-
-    // flip front of cards
-
-    let $symbols = [];
-    let $matches = 0;
-    let $cardArray = [];
+    $('.card__match').click(false);
 
     //  BEGINNNNNNNNNNNNIIIIIIIIIIIINGGGGGGGGGGGGGG
     //
     $(".card_side--front").click(function() {
+      //variable for timer
       $on = true;
 
-      firstCard = $(this);
+      // if ($(this).hasClass("card__match")) {
+      //   console.log('matched');
+      // }
+
+      let firstCard = $(this);
       $cardArray.push(firstCard);
 
       // flip back of cards
       $(this).css('transform', 'rotateY(-180deg)');
       $(this).next().css('transform', 'rotateY(0)');
 
-      // gets letter of card 
+
+      // GET LETTER OF CARD 
       let $symbol = $(this).next().children('span').text();
       $symbols.push($symbol);
-      console.log($symbols);
       
       if ($symbols.length === 2) {
         if ($symbols[0] !== $symbols[1]) {
-          // $(this).css("transform", "rotateY(-180deg)");
-          // $(this).next().css("transform", "rotateY(0)");
           $cardArray[0].css("transform", "rotateY(0)");
           $cardArray[0].next().css("transform", "rotateY(180deg)");
           $cardArray[1].css("transform", "rotateY(-360deg)");
@@ -71,25 +71,26 @@ function main() {
         }
       }
 
-      // remove stars switch statement
+      // remove stars at move count
       switch ($num) {
-        case 4:
+        case 8:
           $star1.remove();
           break;
-        case 8:
+        case 12:
           $star2.remove();
           break;
-        case 12:
+        case 16:
           $star3.remove();
       };
 
-      if($matches === 1) {
-        $('.modal__subheading').text('You did it in ' + $num + ' moves, with a rating of !');//include STARS
+      if($matches === 8) {
+        $('.modal__subheading').text('You did it in ' + $num + ' moves, with a rating of ' + $star1 + $star2 + $star3 + '!');
         $('.modal__time').text('Your time was ' + $minutes.text() + ':' + $startTime.text());
         $('.modal').css('display', 'block');
         $on = false;
       }
       
+      //START TIMER
       if ($on && $moves.text() === "0") {
         $timer = setInterval(function() {
           $var += 1;
@@ -105,7 +106,8 @@ function main() {
             $startTime.text($var);
           }
         }, 1000);
-      } 
+      }
+      //STOP TIMER 
       if ($on === false) {
         clearInterval($timer);
       }
@@ -116,9 +118,12 @@ function main() {
       $moves.text($num);
     });
     
+    // FLIP BACK CARD
     $(".card_side--back").click(function() {
       $(this).css("transform", "rotateY(180deg)");
       $(this).prev().css('transform', 'rotateY(0)');
+      $cardArray = [];
+      $symbols = [];
     });
 
     //reset function
