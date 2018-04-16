@@ -13,21 +13,8 @@ function main() {
 
     const $classes = ['<i class="card__symbol card_side--back icon-basic-clubs"></i><span>a</span>', '<i class="card__symbol card_side--back icon-basic-clubs"></i><span>a</span>', '<i class="card__symbol card_side--back icon-basic-heart"></i><span>b</span>', '<i class="card__symbol card_side--back icon-basic-heart"></i><span>b</span>', '<i class="card__symbol card_side--back icon-basic-diamonds"></i><span>c</span>', '<i class="card__symbol card_side--back icon-basic-diamonds"></i><span>c</span>', '<i class="card__symbol card_side--back icon-basic-spades"></i><span>d</span>', '<i class="card__symbol card_side--back icon-basic-spades"></i><span>d</span>', '<i class="card__symbol card_side--back icon-basic-signs"></i><span>e</span>', '<i class="card__symbol card_side--back icon-basic-signs"></i><span>e</span>', '<i class="card__symbol card_side--back icon-basic-helm"></i><span>f</span>', '<i class="card__symbol card_side--back icon-basic-helm"></i><span>f</span>', '<i class="card__symbol card_side--back icon-basic-flag1"></i><span>g</span>', '<i class="card__symbol card_side--back icon-basic-flag1"></i><span>g</span>', '<i class="card__symbol card_side--back icon-basic-globe"></i><span>h</span>', '<i class="card__symbol card_side--back icon-basic-globe"></i><span>h</span>'];
 
+    $on = null;
     // timer function
-      setInterval(function() {
-        $var += 1;
-        
-        if ($var < 10) {
-          $startTime.text("0" + $var);
-        } else if ($var > 59) {
-          $min += 1;
-          $minutes.text($min);
-          $var = 0;
-          $startTime.text('00');
-        } else if ($var >= 10) {
-          $startTime.text($var);
-        };
-      }, 1000);
 
     // add classes
     $cards.each(function() {
@@ -43,10 +30,11 @@ function main() {
     let $symbols = [];
     let $matches = 0;
     let $cardArray = [];
+
+    //  BEGINNNNNNNNNNNNIIIIIIIIIIIINGGGGGGGGGGGGGG
+    //
     $(".card_side--front").click(function() {
-      // click counter
-      $num += 1;
-      $moves.text($num);
+      $on = true;
 
       firstCard = $(this);
       $cardArray.push(firstCard);
@@ -54,33 +42,6 @@ function main() {
       // flip back of cards
       $(this).css('transform', 'rotateY(-180deg)');
       $(this).next().css('transform', 'rotateY(0)');
-
-      // // gets letter of card v.mentor 
-      // let $symbol = $(this).next().children('span').text();
-      // $symbols.push($symbol);
-      // console.log($symbols);
-      
-      // if (firstCard === null) {
-      //   firstCard = $(this);
-      //   console.log('yes');
-      // }
-
-      // if ($symbols.length === 2) {
-      //   if ($symbols[0] !== $symbols[1]) {
-      //     $(this).css("transform", "rotateY(-180deg)");
-      //     $(this).next().css('transform', 'rotateY(0)');
-      //     $(firstCard).next().css('transform', 'rotateY(0)');
-      //     $(firstCard).css("transform", "rotateY(-180deg)");
-      //     $symbols = [];
-      //     console.log("NOPE");
-      //   } else {
-      //     console.log("YAY");
-      //     $symbols = [];
-      //     $matches += 1;
-      //   }
-        
-      //   firstCard = null;
-      // }
 
       // gets letter of card 
       let $symbol = $(this).next().children('span').text();
@@ -126,7 +87,33 @@ function main() {
         $('.modal__subheading').text('You did it in ' + $num + ' moves, with a rating of !');//include STARS
         $('.modal__time').text('Your time was ' + $minutes.text() + ':' + $startTime.text());
         $('.modal').css('display', 'block');
+        $on = false;
       }
+      
+      if ($on && $moves.text() === "0") {
+        $timer = setInterval(function() {
+          $var += 1;
+
+          if ($var < 10) {
+            $startTime.text("0" + $var);
+          } else if ($var > 59) {
+            $min += 1;
+            $minutes.text($min);
+            $var = 0;
+            $startTime.text("00");
+          } else if ($var >= 10) {
+            $startTime.text($var);
+          }
+        }, 1000);
+      } 
+      if ($on === false) {
+        clearInterval($timer);
+      }
+       
+       
+      // click counter
+      $num += 1;
+      $moves.text($num);
     });
     
     $(".card_side--back").click(function() {

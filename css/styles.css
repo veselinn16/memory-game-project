@@ -88,14 +88,14 @@ body {
   border-radius: 1rem;
   display: none; }
   .modal__heading {
-    font-size: 6rem;
+    font-size: 5rem;
     margin-bottom: 3rem; }
   .modal__subheading {
     font-size: 3rem;
     margin-bottom: 3rem; }
   .modal__time {
     font-size: 3rem;
-    margin-bottom: 3rem; }
+    margin-bottom: 13rem; }
 
 .row {
   margin: 0 auto;
