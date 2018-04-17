@@ -1,20 +1,31 @@
 function main() {
+    //moves variables
     const $moves = $(".information__data__moves");
+    const $movesText = $(".information__data__text");
+
+    // stars selector variables
     const $star1 = $("i").first();
     const $star2 = $star1.next();
     const $star3 = $star2.next();
     const $cards = $(".card_side--back");
     let $num = 0;
+
+    // reset button variable
     const $reset = $(".btn");
-    const $startTime = $(".seconds");
-    let $var = 0;
+
+    // timer variables
+    const $minutes = $(".minutes");
+    const $seconds = $(".seconds");
+    let $sec = 0;
     let $min = 0;
-    const $minutes = $('.minutes');
-    $on = null;
+    let $on = null;
+    
+    // card variables
+    let $cardArray = [];
     let $card = null;
     let $symbols = [];
     let $matches = 0;
-    let $cardArray = [];
+    
 
     // CLASSES ARRAY
     const $classes = ['<i class="card__symbol card_side--back icon-basic-clubs"></i><span>a</span>', '<i class="card__symbol card_side--back icon-basic-clubs"></i><span>a</span>', '<i class="card__symbol card_side--back icon-basic-heart"></i><span>b</span>', '<i class="card__symbol card_side--back icon-basic-heart"></i><span>b</span>', '<i class="card__symbol card_side--back icon-basic-diamonds"></i><span>c</span>', '<i class="card__symbol card_side--back icon-basic-diamonds"></i><span>c</span>', '<i class="card__symbol card_side--back icon-basic-spades"></i><span>d</span>', '<i class="card__symbol card_side--back icon-basic-spades"></i><span>d</span>', '<i class="card__symbol card_side--back icon-basic-signs"></i><span>e</span>', '<i class="card__symbol card_side--back icon-basic-signs"></i><span>e</span>', '<i class="card__symbol card_side--back icon-basic-helm"></i><span>f</span>', '<i class="card__symbol card_side--back icon-basic-helm"></i><span>f</span>', '<i class="card__symbol card_side--back icon-basic-flag1"></i><span>g</span>', '<i class="card__symbol card_side--back icon-basic-flag1"></i><span>g</span>', '<i class="card__symbol card_side--back icon-basic-globe"></i><span>h</span>', '<i class="card__symbol card_side--back icon-basic-globe"></i><span>h</span>'];
@@ -26,22 +37,15 @@ function main() {
         $classes.splice($ranNum, 1);
     });
 
-    $('.card__match').click(false);
-
-    //  BEGINNNNNNNNNNNNIIIIIIIIIIIINGGGGGGGGGGGGGG
-    //
+    //  CLICK EVENT LISTENER
     $(".card_side--front").click(function() {
       //variable for timer
       $on = true;
 
-      // if ($(this).hasClass("card__match")) {
-      //   console.log('matched');
-      // }
-
       let firstCard = $(this);
       $cardArray.push(firstCard);
 
-      // flip back of cards
+      // FLIP CARDS
       $(this).css('transform', 'rotateY(-180deg)');
       $(this).next().css('transform', 'rotateY(0)');
 
@@ -50,6 +54,7 @@ function main() {
       let $symbol = $(this).next().children('span').text();
       $symbols.push($symbol);
       
+      // COMPARE SYMBOLS AND ROTATE IF NOT MATCHING OR ADD SHAKE ANIMATION IF MATCHING
       if ($symbols.length === 2) {
         if ($symbols[0] !== $symbols[1]) {
           $cardArray[0].css("transform", "rotateY(0)");
@@ -71,7 +76,7 @@ function main() {
         }
       }
 
-      // remove stars at move count
+      // REMOVE STARS AT SPECIFIED MOVE COUNT
       switch ($num) {
         case 8:
           $star1.remove();
@@ -83,27 +88,28 @@ function main() {
           $star3.remove();
       };
 
-      if($matches === 8) {
-        $('.modal__subheading').text('You did it in ' + $num + ' moves, with a rating of ' + $star1 + $star2 + $star3 + '!');
-        $('.modal__time').text('Your time was ' + $minutes.text() + ':' + $startTime.text());
-        $('.modal').css('display', 'block');
+      // WINNING CONDITION + DISPLAY MODAL
+      if($matches === 1) {
+        $(".modal__subheading").text("You did it in " + $num + " moves, with a rating of " + $star1 + $star2 + $star3 + "!");
+        $('.modal__time').text('Your time was ' + $minutes.text() + ':' + $seconds.text());
+        $(".modal").fadeIn('slow');
         $on = false;
       }
       
       //START TIMER
       if ($on && $moves.text() === "0") {
         $timer = setInterval(function() {
-          $var += 1;
+          $sec += 1;
 
-          if ($var < 10) {
-            $startTime.text("0" + $var);
-          } else if ($var > 59) {
+          if ($sec < 10) {
+            $seconds.text("0" + $sec);
+          } else if ($sec > 59) {
             $min += 1;
             $minutes.text($min);
-            $var = 0;
-            $startTime.text("00");
-          } else if ($var >= 10) {
-            $startTime.text($var);
+            $sec = 0;
+            $seconds.text("00");
+          } else if ($sec >= 10) {
+            $seconds.text($sec);
           }
         }, 1000);
       }
@@ -115,11 +121,19 @@ function main() {
        
       // click counter
       $num += 1;
+      if($num === 1) {
+        $movesText.text('Move');
+      } else {
+        $movesText.text("Moves");
+      }
       $moves.text($num);
     });
     
     // FLIP BACK CARD
     $(".card_side--back").click(function() {
+      if ($(this).hasClass("card__match")) {
+        return false;
+      }
       $(this).css("transform", "rotateY(180deg)");
       $(this).prev().css('transform', 'rotateY(0)');
       $cardArray = [];
