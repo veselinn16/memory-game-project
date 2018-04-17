@@ -78,19 +78,19 @@ function main() {
 
       // REMOVE STARS AT SPECIFIED MOVE COUNT
       switch ($num) {
-        case 8:
+        case 20:
           $star1.remove();
           break;
-        case 12:
+        case 30:
           $star2.remove();
           break;
-        case 16:
+        case 50:
           $star3.remove();
       };
 
       // WINNING CONDITION + DISPLAY MODAL
-      if($matches === 1) {
-        $(".modal__subheading").text("You did it in " + $num + " moves, with a rating of " + $star1 + $star2 + $star3 + "!");
+      if($matches === 8) {
+        $(".modal__subheading").html("You did it in " + $num + " moves, with a rating of " + $(".information__data-stars").html() + "!");
         $('.modal__time').text('Your time was ' + $minutes.text() + ':' + $seconds.text());
         $(".modal").fadeIn('slow');
         $on = false;

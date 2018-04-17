@@ -54,6 +54,8 @@ body {
     width: 90%;
     height: 25%;
     font-size: 3rem; }
+    .information__data-stars {
+      display: inline-block; }
     .information__data__moves {
       margin-left: 0.5rem; }
     .information__data__time {
@@ -128,7 +130,7 @@ body {
   .card__symbol {
     position: relative;
     top: 30.5%;
-    left: 33.5%;
+    left: 32.5%;
     font-size: 4rem;
     font-weight: bold;
     -webkit-background-clip: text;
