@@ -89,13 +89,13 @@ body {
   border-radius: 1rem;
   display: none; }
   .modal__heading {
-    font-size: 5rem;
+    font-size: 3rem;
     margin-bottom: 3rem; }
   .modal__subheading {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 3rem; }
   .modal__time {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 13rem; }
 
 .row {
@@ -127,8 +127,8 @@ body {
   perspective: 150rem; }
   .card__symbol {
     position: relative;
-    top: 37.5%;
-    left: 37.5%;
+    top: 30.5%;
+    left: 33.5%;
     font-size: 4rem;
     font-weight: bold;
     -webkit-background-clip: text;
@@ -159,7 +159,7 @@ body {
 .btn, .btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1.5rem 4rem;
+  padding: 1rem 3rem;
   display: inline-block;
   border-radius: 10rem;
   transition: all .2s;
