@@ -26,6 +26,10 @@
         width: 90%;
         height: 25%;
         font-size: 3rem;
+
+        &-stars {
+            display: inline-block;
+        }
         
         &__moves {
             margin-left: 0.5rem; 
