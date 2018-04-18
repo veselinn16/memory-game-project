@@ -7,7 +7,9 @@ function main() {
     const $star1 = $("i").first();
     const $star2 = $star1.next();
     const $star3 = $star2.next();
-    const $cards = $(".card_side--back");
+    const $cardsFront = $('.card_side--front');
+    const $cardsBack = $(".card_side--back");
+    let $cardIdArray = [];
     let $num = 0;
 
     // reset button variable
@@ -31,19 +33,71 @@ function main() {
     const $classes = ['<i class="card__symbol card_side--back icon-basic-clubs"></i><span>a</span>', '<i class="card__symbol card_side--back icon-basic-clubs"></i><span>a</span>', '<i class="card__symbol card_side--back icon-basic-heart"></i><span>b</span>', '<i class="card__symbol card_side--back icon-basic-heart"></i><span>b</span>', '<i class="card__symbol card_side--back icon-basic-diamonds"></i><span>c</span>', '<i class="card__symbol card_side--back icon-basic-diamonds"></i><span>c</span>', '<i class="card__symbol card_side--back icon-basic-spades"></i><span>d</span>', '<i class="card__symbol card_side--back icon-basic-spades"></i><span>d</span>', '<i class="card__symbol card_side--back icon-basic-signs"></i><span>e</span>', '<i class="card__symbol card_side--back icon-basic-signs"></i><span>e</span>', '<i class="card__symbol card_side--back icon-basic-helm"></i><span>f</span>', '<i class="card__symbol card_side--back icon-basic-helm"></i><span>f</span>', '<i class="card__symbol card_side--back icon-basic-flag1"></i><span>g</span>', '<i class="card__symbol card_side--back icon-basic-flag1"></i><span>g</span>', '<i class="card__symbol card_side--back icon-basic-globe"></i><span>h</span>', '<i class="card__symbol card_side--back icon-basic-globe"></i><span>h</span>'];
 
     // RANDOMLY ADD CLASSES
-    $cards.each(function() {
+    $cardsBack.each(function() {
         let $ranNum = Math.floor(Math.random() * $classes.length);
         $(this).html($classes[$ranNum]);
         $classes.splice($ranNum, 1);
     });
+
+    // ADD CARD ID
+    $cardsFront.each(function() {
+      let $ranNum2 = Math.floor(Math.random() * 16);
+      $(this).addClass($ranNum2.toString());
+    })
 
     //  CLICK EVENT LISTENER
     $(".card_side--front").click(function() {
       //variable for timer
       $on = true;
 
-      let firstCard = $(this);
-      $cardArray.push(firstCard);
+      //START TIMER
+      if ($on && $moves.text() === "0") {
+        $timer = setInterval(function() {
+          $sec += 1;
+
+          if ($sec < 10) {
+            $seconds.text("0" + $sec);
+          } else if ($sec > 59) {
+            $min += 1;
+            $minutes.text($min);
+            $sec = 0;
+            $seconds.text("00");
+          } else if ($sec >= 10) {
+            $seconds.text($sec);
+          }
+        }, 1000);
+      }
+      //STOP TIMER 
+      if ($on === false) {
+        clearInterval($timer);
+      }
+
+      let $classesOfElement = $(this).attr('class')
+      $classesArray = $classesOfElement.split(' ');
+      $classesArray.splice(0, 2);
+      $cardId = Number($classesArray[0]);
+      console.log($cardId);
+      $cardIdArray.push($cardId);
+      console.log($cardIdArray);
+      
+
+      if($cardIdArray[0] === $cardIdArray[1]) {
+        $symbols = [];
+        $num -= 1;
+        $cardIdArray = [];
+      }
+
+      // click counter
+      $num += 1;
+      if($num === 1) {
+        $movesText.text('Move');
+      } else {
+        $movesText.text("Moves");
+      }
+      $moves.text($num);
+
+      let $firstCard = $(this);
+      $cardArray.push($firstCard);
 
       // FLIP CARDS
       $(this).css('transform', 'rotateY(-180deg)');
@@ -57,6 +111,7 @@ function main() {
       // COMPARE SYMBOLS AND ROTATE IF NOT MATCHING OR ADD SHAKE ANIMATION IF MATCHING
       if ($symbols.length === 2) {
         if ($symbols[0] !== $symbols[1]) {
+          // reviewer suggestion
           $cardArray[0].css("transform", "rotateY(0)");
           $cardArray[0].next().css("transform", "rotateY(180deg)");
           $cardArray[1].css("transform", "rotateY(-360deg)");
@@ -65,6 +120,7 @@ function main() {
           $symbols = [];
           console.log("nope");
         } else {
+          console.log($symbols);
           console.log("yay");
           for (let i = 0; i < $cardArray.length; i++) {
             $cardArray[i].addClass('card__match');
@@ -94,39 +150,7 @@ function main() {
         $('.modal__time').text('Your time was ' + $minutes.text() + ':' + $seconds.text());
         $(".modal").fadeIn('slow');
         $on = false;
-      }
-      
-      //START TIMER
-      if ($on && $moves.text() === "0") {
-        $timer = setInterval(function() {
-          $sec += 1;
-
-          if ($sec < 10) {
-            $seconds.text("0" + $sec);
-          } else if ($sec > 59) {
-            $min += 1;
-            $minutes.text($min);
-            $sec = 0;
-            $seconds.text("00");
-          } else if ($sec >= 10) {
-            $seconds.text($sec);
-          }
-        }, 1000);
-      }
-      //STOP TIMER 
-      if ($on === false) {
-        clearInterval($timer);
-      }
-       
-       
-      // click counter
-      $num += 1;
-      if($num === 1) {
-        $movesText.text('Move');
-      } else {
-        $movesText.text("Moves");
-      }
-      $moves.text($num);
+      }       
     });
     
     // FLIP BACK CARD
