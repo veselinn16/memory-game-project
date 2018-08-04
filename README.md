@@ -1,4 +1,4 @@
-# **Memory Game - **
+# Memory Game
 
 ## Description
 A fun game to test the strength of your memory. All you have to do is turn the cards around and memorize the symbols in order to match them with their corresponding pairs.
@@ -14,7 +14,7 @@ Once all cards are matched, a modal will appear, telling you the number of moves
 - SASS
 - JavaScript
 - jQuery
-- *The Sass compiler from NPM
+- The Sass compiler from NPM
 
 ## How to start the game:
 To start the game, open `index.html` and have fun!
