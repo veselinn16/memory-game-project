@@ -8,4 +8,9 @@
     margin-bottom: 4rem;
     background-image: linear-gradient(to right bottom, #cca76a, #d7be7e);
     box-shadow: 0 1.5rem 4rem rgba(black, .2);
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 2.5rem;
 }
