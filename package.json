@@ -4,11 +4,14 @@
   "description": "Memory game project",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass sass/main.scss css/styles.css -w"
+    "watch:sass": "node-sass sass/main.scss css/styles.css -w",
+    "devserver": "live-server",
+    "start": "npm-run-all --parallel devserver watch:sass"
   },
   "author": "Veselin Tonev",
   "license": "ISC",
   "devDependencies": {
-    "node-sass": "^4.8.3"
+    "node-sass": "^4.9.2",
+    "npm-run-all": "^4.1.3"
   }
 }

@@ -1,12 +1,9 @@
 .game {
-    position: absolute;
-    left: 51.3%;
-    top: 70%;
-    transform: translate(-50%, -50%);
-    width: 40%;
-    height: 80%;
+    width: 45vw;
+    height: 80vh;
+    margin:  auto;
     margin-top: 2rem;
-    padding: 3.5rem 3.5rem;
+    padding: 3.5rem;
     border-radius: 1rem;
     margin-bottom: 4rem;
     background-image: linear-gradient(to right bottom, #cca76a, #d7be7e);
