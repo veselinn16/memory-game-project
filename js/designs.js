@@ -60,10 +60,6 @@ function main() {
           }
         }, 1000);
       }
-      //STOP TIMER 
-      if ($on === false) {
-        clearInterval($timer);
-      }
 
       // CLICK COUNTER
       $num += 1;
@@ -128,7 +124,7 @@ function main() {
         $(".modal__subheading").html("You did it in " + $num + " moves, with a rating of " + $(".information__data-stars").html() + "!");
         $('.modal__time').text('Your time was ' + $minutes.text() + ':' + $seconds.text());
         $(".modal").fadeIn('slow');
-        $on = false;
+        clearInterval($timer);
       }       
     });
     
