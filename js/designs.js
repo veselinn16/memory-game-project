@@ -104,14 +104,16 @@ function main() {
       $(this).next().css('transform', 'rotateY(0)');
 
 
-      // GET LETTER OF CARD 
-      let $symbol = $(this).next().children('span').text();
-      $symbols.push($symbol);
+      // GET CLASS OF CARD 
+      let $symbol = $(this).next().children().attr('class').split(/\s+/);
+      // console.log($symbol);
+      $symbols.push($symbol[1]);
       
       // COMPARE SYMBOLS AND ROTATE IF NOT MATCHING OR ADD SHAKE ANIMATION IF MATCHING
       if ($symbols.length === 2) {
         if ($symbols[0] !== $symbols[1]) {
           // reviewer suggestion
+          console.log($symbols);
           $cardArray[0].css("transform", "rotateY(0)");
           $cardArray[0].next().css("transform", "rotateY(180deg)");
           $cardArray[1].css("transform", "rotateY(-360deg)");
