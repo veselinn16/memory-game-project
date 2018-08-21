@@ -1,3 +1,6 @@
+// Media query breakpoints
+$bp-largest: 112.5em;  //1800px
+
 *,
 *::after,
 *::before {
@@ -10,6 +13,10 @@ html {
   // this defines what 1rem is
   font-size: 62.5%; //1rem = 10px
   font-family: 'Julius Sans One', sans-serif;
+
+  @media only screen and (min-width: $bp-largest) {
+    font-size: 75%;
+  }
 }
 
 body {

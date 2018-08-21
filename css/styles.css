@@ -8,6 +8,9 @@
 html {
   font-size: 62.5%;
   font-family: 'Julius Sans One', sans-serif; }
+  @media only screen and (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
   background-color: #DFDBE5;
@@ -102,7 +105,7 @@ body {
     font-size: 4rem;
     font-weight: bold;
     -webkit-background-clip: text;
-    color: black; }
+    color: #fdedc5; }
   .card_side {
     top: 0;
     left: 0;
@@ -119,12 +122,9 @@ body {
       font-size: 4rem;
       font-weight: bold;
       transform: rotateY(180deg);
-      color: #fdedc5;
       display: flex;
       justify-content: center;
       align-items: center; }
-      .card_side--back span {
-        visibility: hidden; }
   .card__match {
     animation: shake 0.5s ease-out; }
 
