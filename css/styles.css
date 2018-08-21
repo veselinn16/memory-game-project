@@ -105,8 +105,7 @@ body {
     font-size: 4rem;
     font-weight: bold;
     -webkit-background-clip: text;
-    background-color: transparent;
-    color: transparent; }
+    color: black; }
   .card_side {
     top: 0;
     left: 0;
