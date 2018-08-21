@@ -8,9 +8,6 @@
     perspective: 150rem;
 
     &__symbol {
-        position: relative;
-        top: 30.5%;
-        left: 32.5%;
         font-size: 4rem;
         font-weight: bold;
         -webkit-background-clip: text;
@@ -38,6 +35,10 @@
             font-weight: bold;
             transform: rotateY(180deg);
             color: #fdedc5;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             span {
                 visibility: hidden;
