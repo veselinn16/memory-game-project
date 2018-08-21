@@ -1,22 +1,21 @@
 function main() {
     // MOVES VARIABLES
-    const $moves = $(".information__data__moves");
-    const $movesText = $(".information__data__text");
+    const $moves = $('.information__data__moves');
+    const $movesText = $('.information__data__text');
 
-    // stars selector variables
-    const $star1 = $("i").first();
+    // STARS VARIABLES
+    const $star1 = $('i').first();
     const $star2 = $star1.next();
     const $star3 = $star2.next();
-    const $cardsFront = $('.card_side--front');
-    const $cardsBack = $(".card_side--back");
+    
     let $num = 0;
 
     // RESET BUTTON
-    const $reset = $(".btn");
+    const $reset = $('.btn');
 
     // TIMER VARIABLES
-    const $minutes = $(".minutes");
-    const $seconds = $(".seconds");
+    const $minutes = $('.minutes');
+    const $seconds = $('.seconds');
     let $sec = 0;
     let $min = 0;
     let $on = null;
@@ -24,6 +23,7 @@ function main() {
     // CARD VARIABLES
     let $cardArray = [];
     let $symbols = [];
+    const $cardsBack = $('.card_side--back');
 
     let $matches = 0;
     
@@ -39,22 +39,22 @@ function main() {
     });
 
     //  CLICK EVENT LISTENER
-    $(".card_side--front").click(function() {
+    $('.card_side--front').click(function() {
       //variable for timer
       $on = true;
 
       //START TIMER
-      if ($on && $moves.text() === "0") {
+      if ($on && $moves.text() === '0') {
         $timer = setInterval(function() {
           $sec += 1;
 
           if ($sec < 10) {
-            $seconds.text("0" + $sec);
+            $seconds.text('0' + $sec);
           } else if ($sec > 59) {
             $min += 1;
             $minutes.text($min);
             $sec = 0;
-            $seconds.text("00");
+            $seconds.text('00');
           } else if ($sec >= 10) {
             $seconds.text($sec);
           }
@@ -66,7 +66,7 @@ function main() {
       if($num === 1) {
         $movesText.text('Move');
       } else {
-        $movesText.text("Moves");
+        $movesText.text('Moves');
       }
       $moves.text($num);
 
@@ -88,18 +88,18 @@ function main() {
         if ($symbols[0] !== $symbols[1]) {
           // reviewer suggestion
           console.log($symbols);
-          $cardArray[0].css("transform", "rotateY(0)");
-          $cardArray[0].next().css("transform", "rotateY(180deg)");
-          $cardArray[1].css("transform", "rotateY(-360deg)");
-          $cardArray[1].next().css("transform", "rotateY(-180deg)");          
+          $cardArray[0].css('transform', 'rotateY(0)');
+          $cardArray[0].next().css('transform', 'rotateY(180deg)');
+          $cardArray[1].css('transform', 'rotateY(-360deg)');
+          $cardArray[1].next().css('transform', 'rotateY(-180deg)');          
           $cardArray = []
           $symbols = [];
-          console.log("nope");
+          console.log('nope');
         } else {
-          console.log("yay");
+          console.log('yay');
           for (let card of $cardArray) {
             card.addClass('card__match');
-            card.next().addClass("card__match");
+            card.next().addClass('card__match');
           }
           $cardArray = [];
           $symbols = [];
@@ -121,19 +121,19 @@ function main() {
 
       // WINNING CONDITION + DISPLAY MODAL
       if($matches === 8) {
-        $(".modal__subheading").html("You did it in " + $num + " moves, with a rating of " + $(".information__data-stars").html() + "!");
+        $('.modal__subheading').html('You did it in ' + $num + ' moves, with a rating of ' + $('.information__data-stars').html() + '!');
         $('.modal__time').text('Your time was ' + $minutes.text() + ':' + $seconds.text());
-        $(".modal").fadeIn('slow');
+        $('.modal').fadeIn('slow');
         clearInterval($timer);
       }       
     });
     
     // FLIP BACK CARD
-    $(".card_side--back").click(function() {
-      if ($(this).hasClass("card__match")) {
+    $('.card_side--back').click(function() {
+      if ($(this).hasClass('card__match')) {
         return false;
       }
-      $(this).css("transform", "rotateY(180deg)");
+      $(this).css('transform', 'rotateY(180deg)');
       $(this).prev().css('transform', 'rotateY(0)');
       $cardArray = [];
       $symbols = [];
