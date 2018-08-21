@@ -1,5 +1,5 @@
 function main() {
-    //moves variables
+    // MOVES VARIABLES
     const $moves = $(".information__data__moves");
     const $movesText = $(".information__data__text");
 
@@ -9,23 +9,22 @@ function main() {
     const $star3 = $star2.next();
     const $cardsFront = $('.card_side--front');
     const $cardsBack = $(".card_side--back");
-    let $cardIdArray = [];
     let $num = 0;
 
-    // reset button variable
+    // RESET BUTTON
     const $reset = $(".btn");
 
-    // timer variables
+    // TIMER VARIABLES
     const $minutes = $(".minutes");
     const $seconds = $(".seconds");
     let $sec = 0;
     let $min = 0;
     let $on = null;
     
-    // card variables
+    // CARD VARIABLES
     let $cardArray = [];
-    let $card = null;
     let $symbols = [];
+
     let $matches = 0;
     
 
@@ -38,12 +37,6 @@ function main() {
         $(this).html($classes[$ranNum]);
         $classes.splice($ranNum, 1);
     });
-
-    // ADD CARD ID
-    $cardsFront.each(function() {
-      let $ranNum2 = Math.floor(Math.random() * 16);
-      $(this).addClass($ranNum2.toString());
-    })
 
     //  CLICK EVENT LISTENER
     $(".card_side--front").click(function() {
@@ -72,22 +65,7 @@ function main() {
         clearInterval($timer);
       }
 
-      let $classesOfElement = $(this).attr('class')
-      $classesArray = $classesOfElement.split(' ');
-      $classesArray.splice(0, 2);
-      $cardId = Number($classesArray[0]);
-      console.log($cardId);
-      $cardIdArray.push($cardId);
-      console.log($cardIdArray);
-      
-
-      if($cardIdArray[0] === $cardIdArray[1]) {
-        $symbols = [];
-        $num -= 1;
-        $cardIdArray = [];
-      }
-
-      // click counter
+      // CLICK COUNTER
       $num += 1;
       if($num === 1) {
         $movesText.text('Move');
@@ -104,7 +82,7 @@ function main() {
       $(this).next().css('transform', 'rotateY(0)');
 
 
-      // GET CLASS OF CARD 
+      // GET CLASS OF CARD AND PUSH IT TO SYMBOLS ARRAY
       let $symbol = $(this).next().children().attr('class').split(/\s+/);
       // console.log($symbol);
       $symbols.push($symbol[1]);
@@ -122,11 +100,10 @@ function main() {
           $symbols = [];
           console.log("nope");
         } else {
-          console.log($symbols);
           console.log("yay");
-          for (let i = 0; i < $cardArray.length; i++) {
-            $cardArray[i].addClass('card__match');
-            $cardArray[i].next().addClass("card__match");
+          for (let card of $cardArray) {
+            card.addClass('card__match');
+            card.next().addClass("card__match");
           }
           $cardArray = [];
           $symbols = [];
@@ -166,7 +143,7 @@ function main() {
       $symbols = [];
     });
 
-    //reset function
+    // RESET FUNCTION
     $reset.click(function() {
       location.reload(true);
     });    
