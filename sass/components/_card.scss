@@ -39,6 +39,14 @@
             justify-content: center;
             align-items: center;
         }
+
+        &--active {
+            transform: rotateY(0deg);
+        }
+
+        &--passive {
+            transform: rotateY(-180deg);
+        }
     }
 
     &__match {
