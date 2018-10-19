@@ -85,6 +85,7 @@ function main() {
       // COMPARE SYMBOLS AND ROTATE IF NOT MATCHING OR ADD SHAKE ANIMATION IF MATCHING
       if ($symbols.length === 2) {
         if ($symbols[0] !== $symbols[1]) {
+          $('.game').off('click');
           // remove classes from cards
           setTimeout(() => {
             $cardArray[0].removeClass('card_side--passive')
@@ -144,7 +145,7 @@ function main() {
     });
 
     // RESET FUNCTION
-    $reset.click(function() {
+    $reset.click(() => {
       location.reload(true);
     });    
 };
