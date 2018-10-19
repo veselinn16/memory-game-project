@@ -6,8 +6,8 @@
     padding: 3.5rem;
     border-radius: 1rem;
     margin-bottom: 4rem;
-    background-image: linear-gradient(to right bottom, #cca76a, #d7be7e);
-    box-shadow: 0 1.5rem 4rem rgba(black, .2);
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .2);
+    @include black-gradient;
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
