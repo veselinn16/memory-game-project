@@ -9,3 +9,7 @@
 @mixin black-gradient {
     background-image: linear-gradient(to right bottom, #32322E, #1C1A1C);
 }
+
+@mixin red-gradient {
+    background-image: linear-gradient(to right bottom, #9F3430, #8A0F1B);
+}
