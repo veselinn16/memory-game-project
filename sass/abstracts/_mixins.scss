@@ -5,3 +5,7 @@
         clear: both;
     }
 }
+
+@mixin black-gradient {
+    background-image: linear-gradient(to right bottom, #32322E, #1C1A1C);
+}
