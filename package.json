@@ -4,9 +4,9 @@
   "description": "Memory game project",
   "main": "index.js",
   "scripts": {
-    "watch:sass": "node-sass sass/main.scss css/styles.css -w",
+    "compile:sass": "sass --watch sass/main.scss:css/styles.css",
     "devserver": "live-server",
-    "start": "npm-run-all --parallel devserver watch:sass"
+    "start": "npm-run-all --parallel devserver compile:sass"
   },
   "author": "Veselin Tonev",
   "license": "ISC",
