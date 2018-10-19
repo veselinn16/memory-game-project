@@ -7,9 +7,13 @@
 }
 
 @mixin black-gradient {
-    background-image: linear-gradient(to right bottom, #32322E, #1C1A1C);
+    background-image: linear-gradient(to right bottom, #32322E, #1c1a1c);
 }
 
 @mixin red-gradient {
-    background-image: linear-gradient(to right bottom, #9F3430, #8A0F1B);
+    background-image: linear-gradient(to right bottom, #9f3430, #8a0f1b);
+}
+
+@mixin mixed-gradient {
+    background-image: linear-gradient(to right bottom, #f2d4a9, #9f3430);
 }
