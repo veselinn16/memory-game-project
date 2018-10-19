@@ -10,7 +10,6 @@
   transition: all .2s;
   position: relative;
   font-size: 1.75rem;
-//   float: right;
 
   //change for <button> element
   border: none;
@@ -34,22 +33,22 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0,.2);
   }
 
-  &--purple {
-    background-image: linear-gradient(to right bottom, #322c51, #9c4c74);
-    color: #fdedc5;
+  &--1 {
+    @include mixed-gradient;
+    color: $color-maroon;
     float: right;
 
     &::after {
-        background-image: linear-gradient(to right bottom, #322c51, #9c4c74);
+      @include mixed-gradient;
     }
   }
 
-  &--coral {
-    background-color: coral;
-    color: #fff;
+  &--2 {
+    background-color: $color-maroon;
+    color: $color-yellow;
 
     &::after {
-      background-color: coral;
+      background-color: $color-maroon;
     }
   }
 
