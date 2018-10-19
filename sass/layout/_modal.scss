@@ -1,7 +1,8 @@
 .modal {
     width: 50vh;
     height: 50vh;
-    background-color: #fff;
+    @include black-gradient;
+    color: $color-yellow;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -9,6 +10,7 @@
     text-align: center;
     padding: 10rem;
     border-radius: 1rem;
+    perspective: 150rem;
     display: none;
 
     &__heading {
