@@ -23,3 +23,7 @@ Once all cards are matched, a modal will appear, telling you the number of moves
 - JavaScript
 - jQuery
 - Sass compiler npm package
+
+## Notes from developer
+
+**Have fun!!!** :relaxed:
