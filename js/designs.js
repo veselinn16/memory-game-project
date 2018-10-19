@@ -74,9 +74,8 @@ function main() {
       $cardArray.push($firstCard);
 
       // FLIP CARDS
-      $(this).css('transform', 'rotateY(-180deg)');
-      $(this).next().css('transform', 'rotateY(0)');
-
+      $(this).toggleClass('card_side--passive');
+      $(this).next().toggleClass('card_side--active');
 
       // GET CLASS OF CARD AND PUSH IT TO SYMBOLS ARRAY
       let $symbol = $(this).next().children().attr('class').split(/\s+/);
@@ -86,24 +85,27 @@ function main() {
       // COMPARE SYMBOLS AND ROTATE IF NOT MATCHING OR ADD SHAKE ANIMATION IF MATCHING
       if ($symbols.length === 2) {
         if ($symbols[0] !== $symbols[1]) {
-          // reviewer suggestion
-          console.log($symbols);
-          $cardArray[0].css('transform', 'rotateY(0)');
-          $cardArray[0].next().css('transform', 'rotateY(180deg)');
-          $cardArray[1].css('transform', 'rotateY(-360deg)');
-          $cardArray[1].next().css('transform', 'rotateY(-180deg)');          
-          $cardArray = []
-          $symbols = [];
-          console.log('nope');
+          // remove classes from cards
+          setTimeout(() => {
+            $cardArray[0].removeClass('card_side--passive')
+            $cardArray[0].next().removeClass('card_side--active');
+            $cardArray[1].removeClass('card_side--passive');
+            $cardArray[1].next().removeClass('card_side--active');
+            $cardArray = []
+            $symbols = [];
+            console.log('nope');
+          }, 600);
         } else {
           console.log('yay');
-          for (let card of $cardArray) {
-            card.addClass('card__match');
-            card.next().addClass('card__match');
-          }
-          $cardArray = [];
-          $symbols = [];
-          $matches += 1;
+          setTimeout(() => {
+            for (let card of $cardArray) {
+              card.addClass('card__match');
+              card.next().addClass('card__match');
+            }
+            $cardArray = [];
+            $symbols = [];
+            $matches += 1;
+          }, 600);
         }
       }
 
@@ -120,12 +122,14 @@ function main() {
       };
 
       // WINNING CONDITION + DISPLAY MODAL
-      if($matches === 8) {
-        $('.modal__subheading').html('You did it in ' + $num + ' moves, with a rating of ' + $('.information__data-stars').html() + '!');
-        $('.modal__time').text('Your time was ' + $minutes.text() + ':' + $seconds.text());
-        $('.modal').fadeIn('slow');
-        clearInterval($timer);
-      }       
+      setTimeout(() => {
+        if($matches === 8) {
+          $('.modal__subheading').html('You did it in ' + $num + ' moves, with a rating of ' + $('.information__data-stars').html() + '!');
+          $('.modal__time').text('Your time was ' + $minutes.text() + ':' + $seconds.text());
+          $('.modal').fadeIn('slow');
+          clearInterval($timer);
+        }
+      }, 600)       
     });
     
     // FLIP BACK CARD
@@ -133,8 +137,8 @@ function main() {
       if ($(this).hasClass('card__match')) {
         return false;
       }
-      $(this).css('transform', 'rotateY(180deg)');
-      $(this).prev().css('transform', 'rotateY(0)');
+      $(this).toggleClass('card_side--active');
+      $(this).prev().toggleClass('card_side--passive');
       $cardArray = [];
       $symbols = [];
     });
