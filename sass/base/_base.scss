@@ -6,6 +6,11 @@
   box-sizing: inherit;
 }
 
+::selection {
+  background: $color-yellow;
+  color: $color-maroon;
+}
+
 html {
   // this defines what 1rem is
   font-size: 62.5%; //1rem = 10px
