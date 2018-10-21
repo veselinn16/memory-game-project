@@ -6,6 +6,11 @@
   box-sizing: inherit;
 }
 
+::selection {
+  background: #f2d4a9;
+  color: #9f3430;
+}
+
 html {
   font-size: 62.5%;
   font-family: "Julius Sans One", sans-serif;
@@ -193,6 +198,7 @@ body {
   background-image: linear-gradient(to right bottom, #f2d4a9, #9f3430);
   color: #9f3430;
   float: right;
+  font-weight: 900;
 }
 .btn--1::after {
   background-image: linear-gradient(to right bottom, #f2d4a9, #9f3430);
