@@ -37,6 +37,7 @@
     @include mixed-gradient;
     color: $color-maroon;
     float: right;
+    font-weight: 900;
 
     &::after {
       @include mixed-gradient;
